@@ -46,10 +46,10 @@
             </div>
             <div class="col-md-3">
                 <label class="form-label">Guru Input</label>
-                <select name="teacher_id" class="form-select">
+                <select name="recorded_by" class="form-select">
                     <option value="">Semua Guru</option>
                     @foreach($teachers as $teacher)
-                        <option value="{{ $teacher->id }}" {{ request('teacher_id') == $teacher->id ? 'selected' : '' }}>
+                        <option value="{{ $teacher->id }}" {{ request('recorded_by') == $teacher->id ? 'selected' : '' }}>
                             {{ $teacher->name }}
                         </option>
                     @endforeach

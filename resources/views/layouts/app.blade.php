@@ -370,6 +370,12 @@
                         <span class="badge bg-success ms-auto">Baru</span>
                     </a>
                 </div>
+                <div class="menu-item">
+                    <a href="{{ route('admin.setup') }}" class="menu-link {{ request()->routeIs('admin.setup') ? 'active' : '' }}">
+                        <i class="bi bi-gear-wide-connected"></i>
+                        <span>Panduan Setup</span>
+                    </a>
+                </div>
             @else
                 <!-- Guru Menu -->
                 <div class="menu-section">

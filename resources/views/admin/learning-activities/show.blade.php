@@ -138,7 +138,7 @@
                     </tr>
                     <tr>
                         <td class="text-muted">Guru</td>
-                        <td>{{ $learningActivity->teacher->name ?? '-' }}</td>
+                        <td>{{ $learningActivity->recorder->name ?? '-' }}</td>
                     </tr>
                     <tr>
                         <td class="text-muted">Diinput</td>

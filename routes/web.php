@@ -86,6 +86,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         return view('admin.tutorial.index');
     })->name('tutorial');
 
+    // Setup Guide
+    Route::get('setup', function () {
+        return view('admin.setup.index');
+    })->name('setup');
+
     Route::post('ml-models/{mlModel}/set-active', [MlModelController::class, 'setActive'])->name('ml-models.set-active');
     Route::post('ml-models/{mlModel}/retrain', [MlModelController::class, 'retrain'])->name('ml-models.retrain');
     Route::get('ml-models/compare', [MlModelController::class, 'compare'])->name('ml-models.compare');

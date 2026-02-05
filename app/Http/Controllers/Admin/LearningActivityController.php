@@ -15,7 +15,7 @@ class LearningActivityController extends Controller
      */
     public function index(Request $request)
     {
-        $query = LearningActivity::with(['student', 'teacher']);
+        $query = LearningActivity::with(['student', 'recorder']);
 
         // Search by student
         if ($request->filled('search')) {
@@ -33,9 +33,9 @@ class LearningActivityController extends Controller
             });
         }
 
-        // Filter by teacher
-        if ($request->filled('teacher_id')) {
-            $query->where('teacher_id', $request->teacher_id);
+        // Filter by recorder
+        if ($request->filled('recorded_by')) {
+            $query->where('recorded_by', $request->recorded_by);
         }
 
         // Filter by period
@@ -91,7 +91,7 @@ class LearningActivityController extends Controller
      */
     public function show(LearningActivity $learningActivity)
     {
-        $learningActivity->load(['student', 'teacher']);
+        $learningActivity->load(['student', 'recorder']);
         return view('admin.learning-activities.show', compact('learningActivity'));
     }
 
@@ -100,7 +100,7 @@ class LearningActivityController extends Controller
      */
     public function edit(LearningActivity $learningActivity)
     {
-        $learningActivity->load(['student', 'teacher']);
+        $learningActivity->load(['student', 'recorder']);
         $students = Student::orderBy('name')->get();
         $teachers = User::whereHas('role', fn($q) => $q->where('name', 'guru'))->orderBy('name')->get();
         return view('admin.learning-activities.edit', compact('learningActivity', 'students', 'teachers'));
